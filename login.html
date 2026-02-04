@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bejelentkezés</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <header>
+    <h1>Bejelentkezés</h1>
+    <nav>
+      <a href="index.php">Kezdőlap</a>
+    </nav>
+    <div id="userbox"></div>
+  </header>
+  <main>
+    <section class="card">
+      <h2>Belépés / regisztráció</h2>
+      <p class="small">Új név esetén automatikusan létrehozzuk a fiókot.</p>
+      <form id="login-form">
+        <label for="name">Felhasználónév</label>
+        <input id="name" name="name" type="text" autocomplete="username" required />
+
+        <label for="pass">Jelszó</label>
+        <input id="pass" name="pass" type="password" autocomplete="current-password" required />
+
+        <div class="actions" style="margin-top:16px;">
+          <button type="submit">Bejelentkezés</button>
+        </div>
+      </form>
+      <p id="notice" class="notice" hidden></p>
+    </section>
+  </main>
+  <script src="userbox.js"></script>
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>
