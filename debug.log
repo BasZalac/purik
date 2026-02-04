@@ -1,0 +1,80 @@
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"1","qtext":"fff"}
+>> MODQUESTION.PHP HÍVVA
+
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"1","qtext":"fff"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"1","qtext":"ffff"}
+>> MODQUESTION.PHP HÍVVA
+
+>> MODQUESTION.PHP HÍVVA
+{"qid":1,"qtext":"234234"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP HÍVVA
+
+>> MODQUESTION.PHP HÍVVA
+
+>> MODQUESTION.PHP HÍVVA
+{"qid":"2","qtext":"Mire jó a Fronnted és a Backend szétválasztása?"}
+>> MODQUESTION.PHP ELINDULT
+>> MODQUESTION.PHP ELINDULT
+>> RAW POST: {"qid":2,"qtext":"Mire jó a Fronted énnns a Backend szétválasztása?"}
+>> DEKÓDOLT: qid=2 | qtext=Mire jó a Fronted énnns a Backend szétválasztása?
+>> MODQUESTION.PHP ELINDULT
+>> RAW POST: {"qid":2,"qtext":"Mire jó a Fronted énns a Backend szétválasztása?"}
+>> DEKÓDOLT: qid=2 | qtext=Mire jó a Fronted énns a Backend szétválasztása?
+>> MODQUESTION.PHP ELINDULT
+>> RAW POST: {"qid":2,"qtext":"Mire jó a Fronted és a Backend szétválasztása?"}
+>> DEKÓDOLT: qid=2 | qtext=Mire jó a Fronted és a Backend szétválasztása?
+>> MODQUESTION.PHP ELINDULT
+>> RAW POST: {"qid":2,"qtext":"Mire jó a Fronted és a Backend szétválasztása??"}
+>> DEKÓDOLT: qid=2 | qtext=Mire jó a Fronted és a Backend szétválasztása??
+>> MODQUESTION.PHP ELINDULT
+>> RAW POST: {"qid":2,"qtext":"Mire jó a Frontend és a Backend szétválasztása??"}
+>> DEKÓDOLT: qid=2 | qtext=Mire jó a Frontend és a Backend szétválasztása??
+>> MODQUESTION.PHP ELINDULT
+>> RAW POST: {"qid":2,"qtext":"Mire jó a Frontend és a Backend szétválasztása?"}
+>> DEKÓDOLT: qid=2 | qtext=Mire jó a Frontend és a Backend szétválasztása?
+>> MODQUESTION.PHP ELINDULT
+>> RAW POST: {"qid":2,"qtext":"Mire jó a Frontend és a Backend szétválasztása?"}
+>> DEKÓDOLT: qid=2 | qtext=Mire jó a Frontend és a Backend szétválasztása?
+>> MODQUESTION.PHP ELINDULT
+>> RAW POST: {"qid":2,"qtext":"Mire jó a Frontend és a Backend szétválasztása?"}
+>> DEKÓDOLT: qid=2 | qtext=Mire jó a Frontend és a Backend szétválasztása?
+>> MODQUESTION.PHP ELINDULT
+>> RAW POST: {"qid":2,"qtext":"Mire is jó a Frontend és a Backend szétválasztása?"}
+>> DEKÓDOLT: qid=2 | qtext=Mire is jó a Frontend és a Backend szétválasztása?
