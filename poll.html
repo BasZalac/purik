@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Szavazás</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <header>
+    <h1>Szavazás</h1>
+    <nav></nav>
+    <div id="userbox"></div>
+  </header>
+  <main>
+    <section class="card">
+      <label for="question-select">Válassz kérdést</label>
+      <select id="question-select"></select>
+    </section>
+
+    <section class="card">
+      <h2 id="question-title">Betöltés...</h2>
+      <form id="vote-form"></form>
+      <div class="actions" style="margin-top:16px;">
+        <button id="vote-button" type="submit" form="vote-form">Szavazok</button>
+      </div>
+      <p id="notice" class="notice" hidden></p>
+    </section>
+  </main>
+  <script src="userbox.js"></script>
+  <script type="module" src="js/poll.js"></script>
+</body>
+</html>

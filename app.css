@@ -1,0 +1,161 @@
+:root {
+  color-scheme: light;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  background: #f6f7fb;
+  color: #1f2a44;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #e4e7f0;
+  padding: 16px 20px;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.95rem;
+}
+
+nav a {
+  color: #2b59c3;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(31, 42, 68, 0.08);
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccd2e3;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+button {
+  background: #2b59c3;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button.secondary {
+  background: #eef1f8;
+  color: #1f2a44;
+}
+
+button.danger {
+  background: #d64545;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.notice {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #eef3ff;
+  color: #2b59c3;
+  margin-top: 12px;
+}
+
+.notice.error {
+  background: #fdecec;
+  color: #b32020;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.list-item {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f4f6fb;
+  display: grid;
+  gap: 10px;
+}
+
+.small {
+  font-size: 0.9rem;
+  color: #5b6479;
+}
+
+#userbox {
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+
+#userbox button {
+  margin-left: 8px;
+}
+
+.inline-radio {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.result-bar {
+  background: #e7ecf8;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 10px;
+  margin-top: 6px;
+}
+
+.result-bar > span {
+  display: block;
+  height: 100%;
+  background: #2b59c3;
+}
