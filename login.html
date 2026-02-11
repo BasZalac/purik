@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bejelentkezés</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <header>
+    <h1 id="login-title">Bejelentkezés</h1>
+    <nav>
+      <a href="index.php">Kezdőlap</a>
+    </nav>
+    <div id="userbox"></div>
+  </header>
+  <main>
+    <section class="card hero">
+      <h2 id="login-subtitle">Belépés az alkalmazásba</h2>
+      <p class="small">A belépéshez az adatbázisban tárolt felhasználói adatok szükségesek.</p>
+      <div id="known-users" class="actions"></div>
+    </section>
+
+    <section class="card">
+      <div class="actions" style="margin-bottom: 16px;">
+        <button type="button" id="mode-login">Bejelentkezés</button>
+        <button type="button" id="mode-register" class="secondary">Regisztráció</button>
+      </div>
+
+      <form id="auth-form">
+        <label for="name">Felhasználónév</label>
+        <input id="name" name="name" type="text" autocomplete="username" required />
+
+        <label for="pass">Jelszó</label>
+        <input id="pass" name="pass" type="password" autocomplete="current-password" required />
+
+        <div class="actions" style="margin-top:16px;">
+          <button type="submit" id="submit-button">Bejelentkezés</button>
+        </div>
+      </form>
+      <p id="notice" class="notice" hidden></p>
+    </section>
+  </main>
+  <script src="userbox.js"></script>
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Új kérdés</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <header>
+    <h1>Új kérdés kiírása</h1>
+    <nav></nav>
+    <div id="userbox"></div>
+  </header>
+  <main>
+    <section class="card">
+      <h2>Kérdés és válaszok</h2>
+      <form id="question-form">
+        <label for="qtext">Kérdés</label>
+        <textarea id="qtext" name="qtext" required></textarea>
+
+        <div id="answers"></div>
+        <div class="actions" style="margin-top:16px;">
+          <button type="button" id="add-answer" class="secondary">+ Válasz mező</button>
+          <button type="submit">Mentés</button>
+        </div>
+      </form>
+      <p id="notice" class="notice" hidden></p>
+    </section>
+  </main>
+  <script src="userbox.js"></script>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
