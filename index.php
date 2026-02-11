@@ -24,11 +24,8 @@ if ($latest && $latest->num_rows > 0) {
       <?php if (isset($_SESSION['uid'])): ?>
         <a href="poll.html?qid=<?= $qid ?>">Szavazás</a>
         <a href="result.html?qid=<?= $qid ?>">Eredmények</a>
-        <?php if (($_SESSION['role'] ?? "user") === "admin"): ?>
-          <a href="admin.html">Új kérdés</a>
-          <a href="dashboard.html">Kérdéskezelés</a>
-        <?php endif; ?>
-        <a href="logout.html">Kijelentkezés</a>
+        <a href="admin.html">Új kérdés</a>
+        <a href="dashboard.html">Kérdéskezelés</a>
       <?php else: ?>
         <a href="login.html">Bejelentkezés</a>
       <?php endif; ?>

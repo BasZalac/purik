@@ -5,6 +5,8 @@ const questionTitle = document.getElementById('question-title');
 const voteForm = document.getElementById('vote-form');
 const notice = document.getElementById('notice');
 
+buildNav();
+
 let currentQid = getQueryParam('qid');
 
 async function loadQuestions() {
@@ -76,12 +78,7 @@ voteForm.addEventListener('submit', async (event) => {
   }
 });
 
-async function init() {
-  await buildNav();
-  await loadQuestions();
-}
-
-init().catch((error) => {
+loadQuestions().catch((error) => {
   renderNotice(notice, error.message, true);
   questionTitle.textContent = 'Nem sikerült betölteni a kérdéseket.';
 });

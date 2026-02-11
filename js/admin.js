@@ -1,9 +1,11 @@
-import { buildNav, fetchJSON, getCurrentUser, renderNotice } from './utils.js';
+import { buildNav, fetchJSON, renderNotice } from './utils.js';
 
 const answersContainer = document.getElementById('answers');
 const addAnswerButton = document.getElementById('add-answer');
 const form = document.getElementById('question-form');
 const notice = document.getElementById('notice');
+
+buildNav();
 
 function addAnswerField(value = '') {
   const wrapper = document.createElement('div');
@@ -31,51 +33,38 @@ function addAnswerField(value = '') {
   answersContainer.appendChild(wrapper);
 }
 
-async function init() {
-  await buildNav();
-  const user = await getCurrentUser();
-  if (!user || user.role !== 'admin') {
-    form.style.display = 'none';
-    addAnswerButton.style.display = 'none';
-    renderNotice(notice, 'Ehhez az oldalhoz admin jogosultság kell.', true);
+addAnswerButton.addEventListener('click', () => addAnswerField());
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  renderNotice(notice, '');
+
+  const answers = [...answersContainer.querySelectorAll('input')]
+    .map((input) => input.value.trim())
+    .filter(Boolean);
+
+  if (answers.length < 2) {
+    renderNotice(notice, 'Legalább két válasz szükséges.', true);
     return;
   }
 
-  addAnswerButton.addEventListener('click', () => addAnswerField());
+  try {
+    const result = await fetchJSON('./api/admin.php', {
+      method: 'POST',
+      body: JSON.stringify({
+        qtext: form.qtext.value.trim(),
+        answers,
+      }),
+    });
+    renderNotice(notice, `Mentve. Új kérdés azonosítója: ${result.qid}.`);
+    form.reset();
+    answersContainer.innerHTML = '';
+    addAnswerField();
+    addAnswerField();
+  } catch (error) {
+    renderNotice(notice, error.message, true);
+  }
+});
 
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    renderNotice(notice, '');
-
-    const answers = [...answersContainer.querySelectorAll('input')]
-      .map((input) => input.value.trim())
-      .filter(Boolean);
-
-    if (answers.length < 2) {
-      renderNotice(notice, 'Legalább két válasz szükséges.', true);
-      return;
-    }
-
-    try {
-      const result = await fetchJSON('./api/admin.php', {
-        method: 'POST',
-        body: JSON.stringify({
-          qtext: form.qtext.value.trim(),
-          answers,
-        }),
-      });
-      renderNotice(notice, `Mentve. Új kérdés azonosítója: ${result.qid}.`);
-      form.reset();
-      answersContainer.innerHTML = '';
-      addAnswerField();
-      addAnswerField();
-    } catch (error) {
-      renderNotice(notice, error.message, true);
-    }
-  });
-
-  addAnswerField();
-  addAnswerField();
-}
-
-init();
+addAnswerField();
+addAnswerField();

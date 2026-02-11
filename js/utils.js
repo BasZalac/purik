@@ -36,34 +36,14 @@ export function renderNotice(target, message, isError = false) {
   target.hidden = !message;
 }
 
-export async function getCurrentUser() {
-  try {
-    return await fetchJSON('./api/me.php');
-  } catch {
-    return null;
-  }
-}
-
-export async function buildNav() {
+export function buildNav() {
   const nav = document.querySelector('nav');
   if (!nav) return;
-
-  const user = await getCurrentUser();
-  const links = [
-    '<a href="index.php">Kezdőlap</a>',
-  ];
-
-  if (user) {
-    links.push('<a href="poll.html">Szavazás</a>');
-    links.push('<a href="result.html">Eredmények</a>');
-    if (user.role === 'admin') {
-      links.push('<a href="admin.html">Új kérdés</a>');
-      links.push('<a href="dashboard.html">Kérdéskezelés</a>');
-    }
-    links.push('<a href="logout.html">Kijelentkezés</a>');
-  } else {
-    links.push('<a href="login.html">Bejelentkezés</a>');
-  }
-
-  nav.innerHTML = links.join('');
+  nav.innerHTML = `
+    <a href="index.php">Kezdőlap</a>
+    <a href="poll.html">Szavazás</a>
+    <a href="result.html">Eredmények</a>
+    <a href="admin.html">Új kérdés</a>
+    <a href="dashboard.html">Kérdéskezelés</a>
+  `;
 }

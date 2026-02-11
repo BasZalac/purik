@@ -1,7 +1,9 @@
-import { buildNav, fetchJSON, getCurrentUser, renderNotice } from './utils.js';
+import { buildNav, fetchJSON, renderNotice } from './utils.js';
 
 const list = document.getElementById('question-list');
 const notice = document.getElementById('notice');
+
+buildNav();
 
 async function loadQuestions() {
   const questions = await fetchJSON('./api/questions.php');
@@ -76,18 +78,6 @@ async function loadQuestions() {
   });
 }
 
-async function init() {
-  await buildNav();
-  const user = await getCurrentUser();
-  if (!user || user.role !== 'admin') {
-    list.innerHTML = '';
-    renderNotice(notice, 'Ehhez az oldalhoz admin jogosultság kell.', true);
-    return;
-  }
-
-  await loadQuestions();
-}
-
-init().catch((error) => {
+loadQuestions().catch((error) => {
   renderNotice(notice, error.message, true);
 });

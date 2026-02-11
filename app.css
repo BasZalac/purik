@@ -53,34 +53,21 @@ nav {
   font-size: 0.95rem;
 }
 
-nav a,
-.actions a {
-  color: var(--primary);
+nav a {
+  color: #2b59c3;
   text-decoration: none;
-  font-weight: 600;
 }
 
-nav a:hover,
-.actions a:hover {
+nav a:hover {
   text-decoration: underline;
 }
 
 .card {
-  background: var(--surface);
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 12px 35px rgba(31, 42, 68, 0.09);
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(31, 42, 68, 0.08);
   margin-bottom: 20px;
-  border: 1px solid #edf0f8;
-}
-
-.card.hero {
-  background: linear-gradient(135deg, #1f45a3, #2f6ae1);
-  color: #fff;
-}
-
-.card.hero .small {
-  color: #e7eeff;
 }
 
 label {
@@ -96,17 +83,8 @@ select {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid #ccd2e3;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 1rem;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(43, 89, 195, 0.18);
 }
 
 textarea {
@@ -115,36 +93,22 @@ textarea {
 }
 
 button {
-  background: var(--primary);
+  background: #2b59c3;
   color: #fff;
   border: none;
   padding: 10px 16px;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.2s, transform 0.15s;
-}
-
-button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
 }
 
 button.secondary {
   background: #eef1f8;
-  color: var(--text);
-}
-
-button.secondary:hover {
-  background: #dfe5f2;
+  color: #1f2a44;
 }
 
 button.danger {
-  background: var(--danger);
-}
-
-button.danger:hover {
-  background: #ab2323;
+  background: #d64545;
 }
 
 .actions {
@@ -156,9 +120,9 @@ button.danger:hover {
 
 .notice {
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: 8px;
   background: #eef3ff;
-  color: var(--primary);
+  color: #2b59c3;
   margin-top: 12px;
 }
 
@@ -173,16 +137,16 @@ button.danger:hover {
 }
 
 .list-item {
-  padding: 14px;
-  border-radius: 12px;
-  background: #f6f8fd;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f4f6fb;
   display: grid;
   gap: 10px;
 }
 
 .small {
   font-size: 0.9rem;
-  color: var(--muted);
+  color: #5b6479;
 }
 
 #userbox {
@@ -202,7 +166,7 @@ button.danger:hover {
 }
 
 .result-bar {
-  background: #dfe6fa;
+  background: #e7ecf8;
   border-radius: 999px;
   overflow: hidden;
   height: 10px;
@@ -212,5 +176,5 @@ button.danger:hover {
 .result-bar > span {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, #2955c0, #4884ff);
+  background: #2b59c3;
 }

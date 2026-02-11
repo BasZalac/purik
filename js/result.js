@@ -7,6 +7,8 @@ const notice = document.getElementById('notice');
 const refreshButton = document.getElementById('refresh-button');
 const autoRefresh = document.getElementById('auto-refresh');
 
+buildNav();
+
 let currentQid = getQueryParam('qid');
 let refreshTimer = null;
 
@@ -82,13 +84,9 @@ refreshButton.addEventListener('click', () => {
 
 autoRefresh.addEventListener('change', scheduleRefresh);
 
-async function init() {
-  await buildNav();
-  await loadQuestions();
-  scheduleRefresh();
-}
-
-init().catch((error) => {
-  renderNotice(notice, error.message, true);
-  questionTitle.textContent = 'Nem sikerült betölteni az eredményeket.';
-});
+loadQuestions()
+  .then(scheduleRefresh)
+  .catch((error) => {
+    renderNotice(notice, error.message, true);
+    questionTitle.textContent = 'Nem sikerült betölteni az eredményeket.';
+  });
