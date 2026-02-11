@@ -22,5 +22,5 @@ document.addEventListener("DOMContentLoaded", () => {
 function logout() {
   fetch('./api/logout.php', {
     credentials: 'include'
-  }).then(() => location.href = 'login.html');
+  }).then(() => location.href = 'logout.html');
 }

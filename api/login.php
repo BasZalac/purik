@@ -3,7 +3,6 @@ header('Content-Type: application/json; charset=utf-8');
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// JSON hibakezelés
 set_error_handler(function($errno, $errstr, $errfile, $errline) {
     http_response_code(500);
     echo json_encode(["error" => "PHP hiba: $errstr ($errfile:$errline)"]);
@@ -29,44 +28,34 @@ if ($name === '' || $pass === '') {
     exit;
 }
 
-// Felhasználó keresése
-$stmt = $conn->prepare("SELECT uid, role, pass FROM user WHERE name = ?");
+$stmt = $conn->prepare("SELECT uid, role, pass FROM user WHERE name = ? LIMIT 1");
 if (!$stmt) {
     http_response_code(500);
     echo json_encode(["error" => "SELECT hiba: " . $conn->error]);
     exit;
 }
+
 $stmt->bind_param("s", $name);
 $stmt->execute();
 $stmt->store_result();
 $stmt->bind_result($uid, $role, $hashedPass);
 
-if ($stmt->num_rows > 0 && $stmt->fetch()) {
-    if (!password_verify($pass, $hashedPass)) {
-        http_response_code(401);
-        echo json_encode(["error" => "Hibás jelszó."]);
-        exit;
-    }
-    $stmt->close(); // 🔧 EZ HIÁNYZOTT
-} else {
+if ($stmt->num_rows === 0 || !$stmt->fetch()) {
     $stmt->close();
-
-    $role = ($name === 'admin') ? 'admin' : 'user';
-    $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
-
-    $stmt = $conn->prepare("INSERT INTO user (name, role, pass) VALUES (?, ?, ?)");
-    if (!$stmt) {
-        http_response_code(500);
-        echo json_encode(["error" => "INSERT hiba: " . $conn->error]);
-        exit;
-    }
-    $stmt->bind_param("sss", $name, $role, $hashedPass);
-    $stmt->execute();
-    $uid = $stmt->insert_id;
-    $stmt->close();
+    http_response_code(401);
+    echo json_encode(["error" => "Nincs ilyen felhasználó."]);
+    exit;
 }
 
-// Session beállítása
+if (!password_verify($pass, $hashedPass)) {
+    $stmt->close();
+    http_response_code(401);
+    echo json_encode(["error" => "Hibás jelszó."]);
+    exit;
+}
+
+$stmt->close();
+
 $_SESSION['uid'] = $uid;
 $_SESSION['name'] = $name;
 $_SESSION['role'] = $role;

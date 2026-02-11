@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eredmények</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <header>
+    <h1>Eredmények</h1>
+    <nav></nav>
+    <div id="userbox"></div>
+  </header>
+  <main>
+    <section class="card">
+      <label for="question-select">Válassz kérdést</label>
+      <select id="question-select"></select>
+      <div class="actions" style="margin-top:12px;">
+        <button id="refresh-button" class="secondary" type="button">Frissítés most</button>
+        <label class="small">
+          <input type="checkbox" id="auto-refresh" checked />
+          Automatikus frissítés (10 mp)
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 id="question-title">Betöltés...</h2>
+      <div id="results" class="list"></div>
+      <p id="notice" class="notice" hidden></p>
+    </section>
+  </main>
+  <script src="userbox.js"></script>
+  <script type="module" src="js/result.js"></script>
+</body>
+</html>
