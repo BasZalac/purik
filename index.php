@@ -26,7 +26,6 @@ if ($latest && $latest->num_rows > 0) {
         <a href="result.html?qid=<?= $qid ?>">Eredmények</a>
         <a href="admin.html">Új kérdés</a>
         <a href="dashboard.html">Kérdéskezelés</a>
-        <a href="logout.html">Kijelentkezés</a>
       <?php else: ?>
         <a href="login.html">Bejelentkezés</a>
       <?php endif; ?>

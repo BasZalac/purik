@@ -45,6 +45,5 @@ export function buildNav() {
     <a href="result.html">Eredmények</a>
     <a href="admin.html">Új kérdés</a>
     <a href="dashboard.html">Kérdéskezelés</a>
-    <a href="logout.html">Kijelentkezés</a>
   `;
 }
