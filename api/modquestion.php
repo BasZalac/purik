@@ -1,5 +1,4 @@
 <?php
-file_put_contents(__DIR__ . '/../debug.log', ">> MODQUESTION.PHP ELINDULT\n", FILE_APPEND);
 header('Content-Type: application/json; charset=utf-8');
 ini_set('display_errors', '0');
 ini_set('html_errors', '0');
@@ -26,12 +25,10 @@ set_exception_handler(function(Throwable $e) {
     exit;
 });
 
-require __DIR__ . '/require_login.php';
+require __DIR__ . '/require_admin.php';
 require __DIR__ . '/../db.php';
 
 $raw = file_get_contents('php://input');
-file_put_contents(__DIR__ . '/../debug.log', ">> RAW POST: $raw\n", FILE_APPEND);
-
 $data = json_decode($raw, true);
 if (!is_array($data)) {
     http_response_code(400);
@@ -41,8 +38,6 @@ if (!is_array($data)) {
 
 $qid = intval($data['qid'] ?? 0);
 $qtext = trim($data['qtext'] ?? '');
-
-file_put_contents(__DIR__ . '/../debug.log', ">> DEKÓDOLT: qid=$qid | qtext=$qtext\n", FILE_APPEND);
 
 if ($qid <= 0 || $qtext === '') {
     http_response_code(400);
@@ -59,9 +54,5 @@ if (!$stmt) {
 $stmt->bind_param("si", $qtext, $qid);
 $stmt->execute();
 
-if ($stmt->affected_rows > 0) {
-    echo json_encode(["message" => "Kérdés frissítve."]);
-} else {
-    echo json_encode(["message" => "Nem történt változás."]);
-}
+echo json_encode(["message" => "Kérdés frissítve."]);
 $stmt->close();
