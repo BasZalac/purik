@@ -5,6 +5,29 @@ const notice = document.getElementById('notice');
 
 buildNav();
 
+function createAnswerField(value = '') {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'list-item';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = value;
+  input.required = true;
+
+  const removeButton = document.createElement('button');
+  removeButton.type = 'button';
+  removeButton.textContent = 'Eltávolítás';
+  removeButton.className = 'secondary';
+  removeButton.addEventListener('click', () => wrapper.remove());
+
+  const actions = document.createElement('div');
+  actions.className = 'actions';
+  actions.appendChild(removeButton);
+
+  wrapper.append(input, actions);
+  return wrapper;
+}
+
 async function loadQuestions() {
   const questions = await fetchJSON('./api/questions.php');
   list.innerHTML = '';
@@ -21,6 +44,20 @@ async function loadQuestions() {
     const title = document.createElement('input');
     title.type = 'text';
     title.value = question.qtext;
+
+    const answerList = document.createElement('div');
+    answerList.className = 'list';
+    (question.answers || []).forEach((answer) => {
+      answerList.appendChild(createAnswerField(answer.atext));
+    });
+
+    const addAnswerButton = document.createElement('button');
+    addAnswerButton.type = 'button';
+    addAnswerButton.textContent = '+ Válasz';
+    addAnswerButton.className = 'secondary';
+    addAnswerButton.addEventListener('click', () => {
+      answerList.appendChild(createAnswerField(''));
+    });
 
     const actions = document.createElement('div');
     actions.className = 'actions';
@@ -39,8 +76,25 @@ async function loadQuestions() {
       <a href="result.html?qid=${question.qid}">Eredmények</a>
     `;
 
+    const answersLocked = Boolean(question.hasVotes);
+    if (answersLocked) {
+      addAnswerButton.disabled = true;
+      answerList.querySelectorAll('input, button').forEach((element) => {
+        element.disabled = true;
+      });
+    }
+
     saveButton.addEventListener('click', async () => {
       renderNotice(notice, '');
+      const answers = [...answerList.querySelectorAll('input')]
+        .map((input) => input.value.trim())
+        .filter(Boolean);
+
+      if (!answersLocked && answers.length < 2) {
+        renderNotice(notice, 'Legalább két válasz szükséges.', true);
+        return;
+      }
+
       try {
         await fetchJSON('./api/modquestion.php', {
           method: 'POST',
@@ -49,7 +103,23 @@ async function loadQuestions() {
             qtext: title.value.trim(),
           }),
         });
-        renderNotice(notice, 'Kérdés frissítve.');
+
+        if (!answersLocked) {
+          await fetchJSON('./api/modanswers.php', {
+            method: 'POST',
+            body: JSON.stringify({
+              qid: question.qid,
+              answers,
+            }),
+          });
+        }
+
+        renderNotice(
+          notice,
+          answersLocked
+            ? 'Kérdés frissítve. A válaszok már nem módosíthatók, mert érkezett szavazat.'
+            : 'Kérdés és válaszok frissítve.',
+        );
       } catch (error) {
         renderNotice(notice, error.message, true);
       }
@@ -72,8 +142,8 @@ async function loadQuestions() {
       }
     });
 
-    actions.append(saveButton, deleteButton);
-    item.append(title, actions, links);
+    actions.append(saveButton, deleteButton, addAnswerButton);
+    item.append(title, answerList, actions, links);
     list.appendChild(item);
   });
 }
